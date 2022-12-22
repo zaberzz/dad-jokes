@@ -12,6 +12,9 @@ const fetchDadJoke = async () => {
     const response = await fetch(url, {
       headers: { Accept: "application/json", "User-Agent": "learning app" },
     });
+    if (!response.ok) {
+      throw new Error(`error`);
+    }
     const data = await response.json();
     result.textContent = data.joke;
   } catch (error) {
